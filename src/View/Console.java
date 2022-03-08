@@ -1,5 +1,6 @@
 package View;
 ;
+import Model.Color;
 import Model.Piece;
 import Model.Player;
 import java.util.ArrayList;
@@ -27,11 +28,11 @@ public class Console implements ViewInterface {
 	}
 
 	@Override
-	public int askColor(int numberOfPlayers, ArrayList<Piece> colors) {
+	public int askColor(int numberOfPlayers, ArrayList<Color> colors) {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("El jugador - " + numberOfPlayers + "\n¿Con qué color desea jugar?");
         int colorNumber = 1;
-        for(Piece color: colors) {
+        for(Color color: colors) {
             System.out.println(colorNumber + ")" +color.toString());
             colorNumber++;
         }
@@ -62,7 +63,7 @@ public class Console implements ViewInterface {
 	@Override
 	public void playerTurn(Player actuaPlayer) {
 		// TODO Auto-generated method stub
-		System.out.println("Turno jugador "+ actuaPlayer.playerType.toString()+"-"+actuaPlayer.color);
+		System.out.println("Turno jugador -"+actuaPlayer.color);
 	}
 
 }

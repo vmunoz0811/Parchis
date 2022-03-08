@@ -7,18 +7,18 @@ public class Game {
 	
 	private Board board;
     private int numberOfPlayer;
-	private Player playerActual;
-    private ArrayList<Player> jugadores;
+	private Player atualPlayer;
+    private ArrayList<Player> players;
 	private Dice dice;
 	private Iterator iterator;
-	private int resultadoDado;
+	private int diceResults;
 	private ViewInterface viewInterface;
 
 	public Game() {
 		board = Board.createInstance();
 		dice = Dice.createDice();
 		this.iterator = new Iterator();
-        this.jugadores = new ArrayList();
+        this.players = new ArrayList();
         this.viewInterface = new Console();
 	}
 
@@ -26,28 +26,28 @@ public class Game {
     	viewInterface.welcome();
         Scanner sc = new Scanner(System.in);
         numberOfPlayer = viewInterface.askNumberOfPlayers();
-        ArrayList<Piece> colores = new ArrayList<Piece>(Arrays.asList(Color.values()));
+        ArrayList<Color> colors = new ArrayList<Color>(Arrays.asList(Color.values()));
         for(int i = 0; i < numberOfPlayer; i++) {
             Player playerAux = null;
             int j = i+1;
-            int opcion = viewInterface.askColor(j, colores);
+            int option = viewInterface.askColor(j, colors);
             int n = 1;
-            for(Color color: colores) {
-                if(n==opcion) {
+            for(Color color: colors) {
+                if(n==option) {
                     playerAux = new Player(color);
-                    colores.remove(color);
+                    colors.remove(color);
                     break;
                 }
                 n++;
             }
             
-            opcion = viewInterface.askTypePlayer();
-            if(opcion == 1) {
+            option = viewInterface.askTypePlayer();
+            if(option == 1) {
                 playerAux.NormalPlayer();
-            } else if (opcion == 2) {
+            } else if (option == 2) {
                 playerAux.PlayerIA();
             }
-            jugadores.add(playerAux);
+            players.add(playerAux);
         }
     }
 	
@@ -55,23 +55,23 @@ public class Game {
 		ArrayList<Box> boxesWithPiecesList;
 		
 		while(!end()) {
-            for(Player player : jugadores) {
-                playerActual = player;
-                viewInterface.playerTurn(playerActual);
+            for(Player player : players) {
+                atualPlayer = player;
+                viewInterface.playerTurn(atualPlayer);
                 if(player.typePlayerJ.toString() == "Normal") {
                     Scanner sc = new Scanner(System.in);
                     viewInterface.pressAnyKeyToContinue();
-                    resultadoDado = dice.rollDice();
+                    diceResults = dice.rollDice();
 
-                    if(resultadoDado == 5 && this.board.getPiecesOnGame() <= 4){
-                        this.board.addPiecesOnBoard(playerActual.getColor());
+                    if(diceResults == 5 && this.board.getPiecesOnGame() <= 4){
+                        this.board.addPiecesOnBoard(atualPlayer.getColor());
                     }else{
-                        boxesWithPiecesList = this.iterator.march(playerActual.getColor());
+                        boxesWithPiecesList = this.iterator.march(atualPlayer.getColor());
                     if(boxesWithPiecesList.size() > 0) {
-                            playerActual.printPiecesLocationByPlayer();
+                            atualPlayer.printPiecesLocationByPlayer();
 
-                            int eleccion = this.playerActual.choice();
-                            this.board.movePieces(boxesWithPiecesList.get(eleccion-1).getPieces().get(0), boxesWithPiecesList.get(eleccion-1), resultadoDado);
+                            int eleccion = this.atualPlayer.choice();
+                            this.board.movePieces(boxesWithPiecesList.get(eleccion-1).getPieces().get(0), boxesWithPiecesList.get(eleccion-1), diceResults);
 
                         }
                     }

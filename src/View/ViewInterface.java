@@ -1,6 +1,6 @@
 package View;
 
-import Model.Piece;
+import Model.Color;
 import Model.Player;
 
 import java.util.ArrayList;
@@ -9,7 +9,7 @@ public interface ViewInterface {
     public void welcome();
     public int askNumberOfPlayers();
 
-    public int askColor(int playerNum, ArrayList<Piece> colors);
+    public int askColor(int playerNum, ArrayList<Color> colors);
 
     public int askTypePlayer();
 

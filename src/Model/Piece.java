@@ -6,14 +6,7 @@ public class Piece {
 public Piece(Color c1){
 	this.color = c1;
 }
-
 	public Color getColor() {
 		return color;
 	}
-}
-enum Color{
-	YELLOW,
-	RED,
-	GREEN,
-	BLUE
 }

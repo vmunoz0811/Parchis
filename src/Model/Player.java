@@ -27,12 +27,6 @@ public class Player {
     	PlayerTypeInterface jugadorIA = new IAPlayer();
     	setPlayerType(jugadorIA);
     }
-    
-    public void Move()
-    {
-        String descripcion = this.playerType.GetDescription();
-        System.out.println("Tipo de jugador que se mueve " + descripcion);
-    }
 
 	public Color getColor() {
 		return color;
