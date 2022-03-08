@@ -74,22 +74,22 @@ public class Board {
 		Piece piece;
 
 		switch (color) {
-			case RED:
+			case ROJO:
 				fabrica = new RedPiecesFactory();
 				piece = fabrica.createPiece();
 				this.whiteBoxes.get(37).putPiece(piece);
 				break;
-			case YELLOW:
+			case AMARILLO:
 				fabrica = new YellowPiecesFactory();
 				piece = fabrica.createPiece();
 				this.whiteBoxes.get(3).putPiece(piece);
 				break;
-			case BLUE:
+			case AZUL:
 				fabrica = new BluePiecesFactory();
 				piece = fabrica.createPiece();
 				this.whiteBoxes.get(20).putPiece(piece);
 				break;
-			case GREEN:
+			case VERDE:
 				fabrica = new GreenPiecesFactory();
 				piece = fabrica.createPiece();
 				this.whiteBoxes.get(54).putPiece(piece);

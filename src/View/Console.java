@@ -10,8 +10,9 @@ public class Console implements ViewInterface {
 	@Override
 	public void welcome() {
 		String ANSI_CYAN_BACKGROUND = "\u001B[46m";
+		String ANSI_BLACK = "\u001B[30m";
 		String ANSI_RESET = "\u001B[0m";
-		System.out.println(ANSI_CYAN_BACKGROUND + "BIENVENIDO/S A PARCHIS" + ANSI_RESET);
+		System.out.println(ANSI_CYAN_BACKGROUND + ANSI_BLACK + "BIENVENIDO/S A PARCHIS" + ANSI_RESET);
 	}
 
 	@Override
@@ -30,7 +31,11 @@ public class Console implements ViewInterface {
 	@Override
 	public int askColor(int numberOfPlayers, ArrayList<Color> colors) {
 		Scanner sc = new Scanner(System.in);
-		System.out.println("El jugador - " + numberOfPlayers + "\n¿Con qué color desea jugar?");
+		String ANSI_BOLD = "\u001B[1m";
+		String ANSI_RESET = "\u001B[0m";
+		String ANSI_GREEN_BACKGROUND = "\u001B[42m";
+		String ANSI_BLACK = "\u001B[30m";
+		System.out.println(ANSI_BOLD + "El jugador - " + numberOfPlayers + ANSI_RESET + ANSI_GREEN_BACKGROUND + ANSI_BLACK + "\n¿Con qué color desea jugar?" + ANSI_RESET);
         int colorNumber = 1;
         for(Color color: colors) {
             System.out.println(colorNumber + ")" +color.toString());
@@ -43,8 +48,11 @@ public class Console implements ViewInterface {
 	@Override
 	public int askTypePlayer() {
 		Scanner sc = new Scanner(System.in);
-		System.out.println("�Sera un jugador humano o una IA?");
-        System.out.println("1.Humano\n2.Ia\n");
+		String ANSI_RESET = "\u001B[0m";
+		String ANSI_GREEN_BACKGROUND = "\u001B[42m";
+		String ANSI_BLACK = "\u001B[30m";
+		System.out.println(ANSI_GREEN_BACKGROUND + ANSI_BLACK + "¿El jugador será humano o máquina?" + ANSI_RESET);
+        System.out.println("1.Humano\n2.Máquina\n");
         int opcion = sc.nextInt();
 		return opcion;
 	}

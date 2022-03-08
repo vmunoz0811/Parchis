@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public enum Color {
-    YELLOW(1), RED(2), GREEN(3), BLUE(4);
+    AMARILLO(1), ROJO(2), VERDE(3), AZUL(4);
     private int color;
     private static final Map<Integer, Color> MAP = new HashMap<>();
 
